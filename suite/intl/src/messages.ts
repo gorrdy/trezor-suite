@@ -4791,6 +4791,199 @@ export const messages = defineMessages({
         id: 'TR_EARN',
         defaultMessage: 'Earn',
     },
+    TR_LENDING: {
+        id: 'TR_LENDING',
+        defaultMessage: 'Lending',
+    },
+    TR_LENDING_SECTION_TITLE: {
+        id: 'TR_LENDING_SECTION_TITLE',
+        defaultMessage: 'Bitcoin-backed loans',
+    },
+    TR_LENDING_SECTION_SUBHEADING: {
+        id: 'TR_LENDING_SECTION_SUBHEADING',
+        defaultMessage:
+            'Borrow against your bitcoin without selling. Pick a loan provider below to start directly from Trezor Suite.',
+    },
+    TR_LENDING_OPEN_IN_SUITE: {
+        id: 'TR_LENDING_OPEN_IN_SUITE',
+        defaultMessage: 'Open in Suite',
+    },
+    TR_LENDING_VISIT_WEBSITE: {
+        id: 'TR_LENDING_VISIT_WEBSITE',
+        defaultMessage: 'Visit website',
+    },
+    TR_LENDING_COMING_SOON: {
+        id: 'TR_LENDING_COMING_SOON',
+        defaultMessage: 'Coming soon',
+    },
+    TR_LENDING_BACK_TO_PROVIDERS: {
+        id: 'TR_LENDING_BACK_TO_PROVIDERS',
+        defaultMessage: 'Back to providers',
+    },
+    TR_LENDING_FIREFISH_DESCRIPTION: {
+        id: 'TR_LENDING_FIREFISH_DESCRIPTION',
+        defaultMessage:
+            'Peer-to-peer bitcoin-backed loans. Non-custodial — your BTC stays locked in a multisig escrow until the loan is repaid.',
+    },
+    TR_LENDING_LEDN_DESCRIPTION: {
+        id: 'TR_LENDING_LEDN_DESCRIPTION',
+        defaultMessage:
+            'Global bitcoin-backed lending with proof-of-reserves attestations. Supports BTC as collateral for USD / USDC loans.',
+    },
+    TR_LENDING_UNCHAINED_DESCRIPTION: {
+        id: 'TR_LENDING_UNCHAINED_DESCRIPTION',
+        defaultMessage:
+            'Collaborative-custody multisig loans in the US. You keep 2 of 3 keys on the collateral throughout the loan term.',
+    },
+    TR_LENDING_HIGHLIGHT_NON_CUSTODIAL: {
+        id: 'TR_LENDING_HIGHLIGHT_NON_CUSTODIAL',
+        defaultMessage: 'Non-custodial multisig escrow',
+    },
+    TR_LENDING_HIGHLIGHT_NO_REHYPOTHECATION: {
+        id: 'TR_LENDING_HIGHLIGHT_NO_REHYPOTHECATION',
+        defaultMessage: 'No rehypothecation of collateral',
+    },
+    TR_LENDING_HIGHLIGHT_EUR_CZK: {
+        id: 'TR_LENDING_HIGHLIGHT_EUR_CZK',
+        defaultMessage: 'Loans in EUR, CZK and more',
+    },
+    TR_LENDING_HIGHLIGHT_GLOBAL: {
+        id: 'TR_LENDING_HIGHLIGHT_GLOBAL',
+        defaultMessage: 'Available globally',
+    },
+    TR_LENDING_HIGHLIGHT_PROOF_OF_RESERVES: {
+        id: 'TR_LENDING_HIGHLIGHT_PROOF_OF_RESERVES',
+        defaultMessage: 'Monthly proof-of-reserves',
+    },
+    TR_LENDING_HIGHLIGHT_MULTISIG: {
+        id: 'TR_LENDING_HIGHLIGHT_MULTISIG',
+        defaultMessage: 'Collaborative-custody multisig',
+    },
+    TR_LENDING_HIGHLIGHT_US: {
+        id: 'TR_LENDING_HIGHLIGHT_US',
+        defaultMessage: 'Regulated US provider',
+    },
+    TR_LENDING_FIREFISH_FORM_TITLE: {
+        id: 'TR_LENDING_FIREFISH_FORM_TITLE',
+        defaultMessage: 'Request a Firefish loan',
+    },
+    TR_LENDING_FIREFISH_FORM_SUBTITLE: {
+        id: 'TR_LENDING_FIREFISH_FORM_SUBTITLE',
+        defaultMessage:
+            'Pick the amount you want to borrow and your preferred terms. You will finish the request on Firefish with your parameters pre-filled.',
+    },
+    TR_LENDING_FIREFISH_FORM_CURRENCY_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_CURRENCY_LABEL',
+        defaultMessage: 'Currency',
+    },
+    TR_LENDING_FIREFISH_FORM_AMOUNT_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_AMOUNT_LABEL',
+        defaultMessage: 'I want to borrow',
+    },
+    TR_LENDING_FIREFISH_FORM_AMOUNT_ERROR: {
+        id: 'TR_LENDING_FIREFISH_FORM_AMOUNT_ERROR',
+        defaultMessage: 'Enter a valid amount.',
+    },
+    TR_LENDING_FIREFISH_FORM_PERIOD_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_PERIOD_LABEL',
+        defaultMessage: 'Loan period',
+    },
+    TR_LENDING_FIREFISH_FORM_RATE_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_RATE_LABEL',
+        defaultMessage: 'Interest rate you offer',
+    },
+    TR_LENDING_FIREFISH_FORM_RATE_HINT: {
+        id: 'TR_LENDING_FIREFISH_FORM_RATE_HINT',
+        defaultMessage: 'Allowed range: {min}% – {max}%.',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_TO_MATCH: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_TO_MATCH',
+        defaultMessage: 'Chance to match:',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_LOW: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_LOW',
+        defaultMessage: 'Low',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_MEDIUM: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_MEDIUM',
+        defaultMessage: 'Medium',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_HIGH: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_HIGH',
+        defaultMessage: 'High',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_VERY_HIGH: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_VERY_HIGH',
+        defaultMessage: 'Very high',
+    },
+    TR_LENDING_FIREFISH_FORM_CHANCE_NA: {
+        id: 'TR_LENDING_FIREFISH_FORM_CHANCE_NA',
+        defaultMessage: 'Not available',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_INSTANT: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT',
+        defaultMessage: 'Instant loan',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_CUSTOM: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_CUSTOM',
+        defaultMessage: 'Custom loan',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_OTC: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_OTC',
+        defaultMessage: 'OTC',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_RATE: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_RATE',
+        defaultMessage: 'Instant loan at {rate}% APR',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_DESC: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_DESC',
+        defaultMessage: 'Fixed rate, funded immediately when your collateral arrives. No bidding.',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_OTC_TITLE: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_OTC_TITLE',
+        defaultMessage: 'Over-the-counter amount',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_OTC_DESC: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_OTC_DESC',
+        defaultMessage:
+            'This size is handled by the Firefish OTC desk — they will contact you after you submit.',
+    },
+    TR_LENDING_FIREFISH_FORM_EMAIL_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_EMAIL_LABEL',
+        defaultMessage: 'Email',
+    },
+    TR_LENDING_FIREFISH_FORM_EMAIL_ERROR: {
+        id: 'TR_LENDING_FIREFISH_FORM_EMAIL_ERROR',
+        defaultMessage: 'Enter a valid email address.',
+    },
+    TR_LENDING_FIREFISH_FORM_AMOUNT_RANGE_ERROR: {
+        id: 'TR_LENDING_FIREFISH_FORM_AMOUNT_RANGE_ERROR',
+        defaultMessage: 'Amount must be between {min} and {max}.',
+    },
+    TR_LENDING_FIREFISH_FORM_COLLATERAL_LINE: {
+        id: 'TR_LENDING_FIREFISH_FORM_COLLATERAL_LINE',
+        defaultMessage:
+            'For {amount} you will lock about {btc} BTC as collateral (before Firefish fees).',
+    },
+    TR_LENDING_FIREFISH_FORM_COLLATERAL_UNKNOWN: {
+        id: 'TR_LENDING_FIREFISH_FORM_COLLATERAL_UNKNOWN',
+        defaultMessage: 'Firefish will calculate the BTC collateral from the live price.',
+    },
+    TR_LENDING_FIREFISH_FORM_COLLATERAL_NOTE: {
+        id: 'TR_LENDING_FIREFISH_FORM_COLLATERAL_NOTE',
+        defaultMessage:
+            'The final BTC amount is set at loan matching, using Firefish’s live BTC price.',
+    },
+    TR_LENDING_FIREFISH_FORM_CONTINUE: {
+        id: 'TR_LENDING_FIREFISH_FORM_CONTINUE',
+        defaultMessage: 'Continue on Firefish',
+    },
+    TR_LENDING_FIREFISH_FORM_DISCLAIMER: {
+        id: 'TR_LENDING_FIREFISH_FORM_DISCLAIMER',
+        defaultMessage:
+            'Firefish is a third-party peer-to-peer lending marketplace. Trezor does not custody collateral or lend funds. Loans are subject to Firefish terms and available jurisdictions.',
+    },
     TR_WALLET: {
         id: 'TR_WALLET',
         defaultMessage: 'Accounts',

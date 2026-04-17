@@ -27,6 +27,18 @@ export const webComponents: Record<PageName, LazyExoticComponent<ComponentType>>
             }),
         ),
     ),
+    'suite-lending': lazy(() =>
+        import(/* webpackChunkName: "lending" */ 'src/views/lending/index').then(({ Lending }) => ({
+            default: Lending,
+        })),
+    ),
+    'lending-firefish': lazy(() =>
+        import(/* webpackChunkName: "lending" */ 'src/views/lending/firefish/index').then(
+            ({ LendingFirefish }) => ({
+                default: LendingFirefish,
+            }),
+        ),
+    ),
     'suite-connect-popup': lazy(() =>
         import(/* webpackChunkName: "connect-popup" */ 'src/views/connect-popup/index').then(
             ({ ConnectPopup }) => ({ default: ConnectPopup }),

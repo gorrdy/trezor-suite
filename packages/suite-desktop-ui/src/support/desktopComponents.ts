@@ -7,6 +7,8 @@ import { Dashboard } from 'src/views/dashboard';
 import { Earn } from 'src/views/earn';
 import { EarnSupply } from 'src/views/earn/supply';
 import { EarnWithdraw } from 'src/views/earn/withdraw';
+import { Lending } from 'src/views/lending';
+import { LendingFirefish } from 'src/views/lending/firefish';
 import PasswordManagerView from 'src/views/password-manager';
 import { SettingsCoins } from 'src/views/settings/SettingsCoins/SettingsCoins';
 import { SettingsConnectedApps } from 'src/views/settings/SettingsConnectedApps/SettingsConnectedApps';
@@ -44,6 +46,8 @@ export const desktopComponents: Record<PageName, ComponentType> = {
     'suite-earn': Earn,
     'earn-supply': EarnSupply,
     'earn-withdraw': EarnWithdraw,
+    'suite-lending': Lending,
+    'lending-firefish': LendingFirefish,
     'suite-connect-popup': ConnectPopup,
     'notifications-index': Notification,
 

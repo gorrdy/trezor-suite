@@ -46,6 +46,14 @@ export const PageName = () => {
         );
     }
 
+    if (currentRoute?.includes('lending')) {
+        return (
+            <BasicName>
+                <Translation id="TR_LENDING" />
+            </BasicName>
+        );
+    }
+
     if (selectedAccount && isAccountTabPage) {
         return <AccountName key={selectedAccount.key} selectedAccount={selectedAccount} />;
     }

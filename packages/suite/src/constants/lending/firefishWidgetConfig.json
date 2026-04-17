@@ -1,0 +1,198 @@
+{
+    "originationFeeRate": "1.5",
+    "currencies": [
+        {
+            "currencyCode": "EUR",
+            "minTransactionLimit": "800.00000",
+            "maxTransactionLimit": "10000000",
+            "maxInstantTransactionLimit": "1000000.00000",
+            "minOtcTransactionLimit": "50000.00000",
+            "bitcoinPrice": "64181.00000",
+            "minInterestRate": "2",
+            "maxInterestRate": "15",
+            "investTickets": [
+                {
+                    "period": 3,
+                    "interestRate": "7.90",
+                    "amount": "89500.00"
+                },
+                {
+                    "period": 6,
+                    "interestRate": "8.90",
+                    "amount": "89500.00"
+                },
+                {
+                    "period": 12,
+                    "interestRate": "9.90",
+                    "amount": "89500.00"
+                },
+                {
+                    "period": 18,
+                    "interestRate": "10.90",
+                    "amount": "248072.92"
+                },
+                {
+                    "period": 24,
+                    "interestRate": "10.90",
+                    "amount": "248072.92"
+                }
+            ]
+        },
+        {
+            "currencyCode": "CZK",
+            "minTransactionLimit": "20000.00000",
+            "maxTransactionLimit": "243215000",
+            "maxInstantTransactionLimit": "10000000.00000",
+            "minOtcTransactionLimit": "1200000.00000",
+            "bitcoinPrice": "1560982.00000",
+            "minInterestRate": "3",
+            "maxInterestRate": "15",
+            "investTickets": []
+        },
+        {
+            "currencyCode": "USDC",
+            "minTransactionLimit": "1000.00000",
+            "maxTransactionLimit": "11795000",
+            "maxInstantTransactionLimit": "1000000.00000",
+            "minOtcTransactionLimit": "50000.00000",
+            "bitcoinPrice": "75702.00000",
+            "minInterestRate": "2",
+            "maxInterestRate": "16",
+            "investTickets": [
+                {
+                    "period": 3,
+                    "interestRate": "8.90",
+                    "amount": "114401.00"
+                },
+                {
+                    "period": 6,
+                    "interestRate": "8.90",
+                    "amount": "114401.00"
+                },
+                {
+                    "period": 12,
+                    "interestRate": "9.90",
+                    "amount": "114401.00"
+                },
+                {
+                    "period": 18,
+                    "interestRate": "9.90",
+                    "amount": "114401.00"
+                },
+                {
+                    "period": 24,
+                    "interestRate": "9.90",
+                    "amount": "111800.00"
+                }
+            ]
+        },
+        {
+            "currencyCode": "USDT",
+            "minTransactionLimit": "1000.00000",
+            "maxTransactionLimit": "11795000",
+            "maxInstantTransactionLimit": "1000000.00000",
+            "minOtcTransactionLimit": "50000.00000",
+            "bitcoinPrice": "75702.00000",
+            "minInterestRate": "2",
+            "maxInterestRate": "16",
+            "investTickets": [
+                {
+                    "period": 3,
+                    "interestRate": "8.50",
+                    "amount": "40400.00"
+                },
+                {
+                    "period": 6,
+                    "interestRate": "8.90",
+                    "amount": "40400.00"
+                },
+                {
+                    "period": 12,
+                    "interestRate": "9.50",
+                    "amount": "113400.00"
+                },
+                {
+                    "period": 18,
+                    "interestRate": "9.90",
+                    "amount": "113400.00"
+                },
+                {
+                    "period": 24,
+                    "interestRate": "9.90",
+                    "amount": "40400.00"
+                }
+            ]
+        },
+        {
+            "currencyCode": "CHF",
+            "minTransactionLimit": "800.00000",
+            "maxTransactionLimit": "9225000",
+            "maxInstantTransactionLimit": "15000.00000",
+            "minOtcTransactionLimit": "50000.00000",
+            "bitcoinPrice": "59209.00000",
+            "minInterestRate": "2",
+            "maxInterestRate": "15",
+            "investTickets": []
+        },
+        {
+            "currencyCode": "PLN",
+            "minTransactionLimit": "3500.00000",
+            "maxTransactionLimit": "42309000",
+            "maxInstantTransactionLimit": "125000.00000",
+            "minOtcTransactionLimit": "220000.00000",
+            "bitcoinPrice": "271548.00000",
+            "minInterestRate": "2",
+            "maxInterestRate": "14",
+            "investTickets": []
+        }
+    ],
+    "matchingModel": {
+        "id": "dc6cc6b8-9cb2-4b8a-b8e6-079c860898f1",
+        "parameters": {
+            "params": [
+                -0.8300138585634568, -0.7102580041221596, 2.438856038443005, -2.0774876602279284,
+                1.000257964991531, 1.5167495329399712, -0.15155645698063225, -0.366522078885847,
+                -1.7138508225295088, -1.1138147665874878
+            ]
+        },
+        "preprocessingStats": {
+            "currencyStats": [
+                {
+                    "currency": "CHF",
+                    "logAmountMean": 8.451224126890192,
+                    "logAmountStd": 1.1042149916294044
+                },
+                {
+                    "currency": "CZK",
+                    "logAmountMean": 11.445364331720214,
+                    "logAmountStd": 1.0353887441548597
+                },
+                {
+                    "currency": "EUR",
+                    "logAmountMean": 8.239048547570938,
+                    "logAmountStd": 1.0737629942025557
+                },
+                {
+                    "currency": "PLN",
+                    "logAmountMean": 9.184430910416197,
+                    "logAmountStd": 0.825403028435275
+                },
+                {
+                    "currency": "USDC",
+                    "logAmountMean": 8.378129418689573,
+                    "logAmountStd": 1.281956121822589
+                },
+                {
+                    "currency": "USDT",
+                    "logAmountMean": 8.728471943516878,
+                    "logAmountStd": 1.526552180135174
+                }
+            ],
+            "interestRateMean": 6.100315831030408,
+            "interestRateStd": 1.7043127926752097,
+            "periodMean": 13.391630477694433,
+            "periodStd": 7.619077147761926
+        },
+        "likelihoodBandThresholds": [0.4, 0.6, 0.75]
+    }
+}

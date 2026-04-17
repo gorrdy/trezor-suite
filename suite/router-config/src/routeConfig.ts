@@ -48,6 +48,16 @@ export const routes = [
         params: earnParams,
     },
     {
+        name: 'suite-lending',
+        pattern: '/lending',
+        app: 'lending',
+    },
+    {
+        name: 'lending-firefish',
+        pattern: '/lending/firefish',
+        app: 'lending',
+    },
+    {
         name: 'suite-version',
         pattern: '/version',
         app: 'version',

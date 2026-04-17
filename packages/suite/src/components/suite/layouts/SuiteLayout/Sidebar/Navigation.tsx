@@ -52,6 +52,12 @@ export const Navigation = ({ children }: NavigationProps) => {
                       ]
                     : []),
                 {
+                    nameId: 'TR_LENDING',
+                    icon: 'bank',
+                    goToRoute: 'suite-lending',
+                    routes: ['suite-lending', 'lending-firefish'],
+                },
+                {
                     nameId: 'TR_NOTIFICATIONS',
                     icon: 'bell',
                     CustomComponent: NotificationDropdown,
