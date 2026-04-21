@@ -4825,16 +4825,6 @@ export const messages = defineMessages({
         defaultMessage:
             'Peer-to-peer bitcoin-backed loans. Non-custodial — your BTC stays locked in a multisig escrow until the loan is repaid.',
     },
-    TR_LENDING_LEDN_DESCRIPTION: {
-        id: 'TR_LENDING_LEDN_DESCRIPTION',
-        defaultMessage:
-            'Global bitcoin-backed lending with proof-of-reserves attestations. Supports BTC as collateral for USD / USDC loans.',
-    },
-    TR_LENDING_UNCHAINED_DESCRIPTION: {
-        id: 'TR_LENDING_UNCHAINED_DESCRIPTION',
-        defaultMessage:
-            'Collaborative-custody multisig loans in the US. You keep 2 of 3 keys on the collateral throughout the loan term.',
-    },
     TR_LENDING_HIGHLIGHT_NON_CUSTODIAL: {
         id: 'TR_LENDING_HIGHLIGHT_NON_CUSTODIAL',
         defaultMessage: 'Non-custodial multisig escrow',
@@ -4846,22 +4836,6 @@ export const messages = defineMessages({
     TR_LENDING_HIGHLIGHT_EUR_CZK: {
         id: 'TR_LENDING_HIGHLIGHT_EUR_CZK',
         defaultMessage: 'Loans in EUR, CZK and more',
-    },
-    TR_LENDING_HIGHLIGHT_GLOBAL: {
-        id: 'TR_LENDING_HIGHLIGHT_GLOBAL',
-        defaultMessage: 'Available globally',
-    },
-    TR_LENDING_HIGHLIGHT_PROOF_OF_RESERVES: {
-        id: 'TR_LENDING_HIGHLIGHT_PROOF_OF_RESERVES',
-        defaultMessage: 'Monthly proof-of-reserves',
-    },
-    TR_LENDING_HIGHLIGHT_MULTISIG: {
-        id: 'TR_LENDING_HIGHLIGHT_MULTISIG',
-        defaultMessage: 'Collaborative-custody multisig',
-    },
-    TR_LENDING_HIGHLIGHT_US: {
-        id: 'TR_LENDING_HIGHLIGHT_US',
-        defaultMessage: 'Regulated US provider',
     },
     TR_LENDING_FIREFISH_FORM_TITLE: {
         id: 'TR_LENDING_FIREFISH_FORM_TITLE',

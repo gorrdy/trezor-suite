@@ -24,7 +24,7 @@ type Provider = {
     descriptionId: TranslationKey;
     highlights: TranslationKey[];
     isAvailable: boolean;
-    website: string;
+    website?: string;
     onOpen?: () => unknown;
 };
 
@@ -69,14 +69,18 @@ const LendingProviderCard = ({ provider }: LendingProviderCardProps) => (
                         <Translation id="TR_LENDING_COMING_SOON" />
                     </Button>
                 )}
-                <Button
-                    intent="neutral"
-                    priority="secondary"
-                    iconRight="arrowSquareOut"
-                    onClick={() => window.open(provider.website, '_blank', 'noopener,noreferrer')}
-                >
-                    <Translation id="TR_LENDING_VISIT_WEBSITE" />
-                </Button>
+                {provider.website && (
+                    <Button
+                        intent="neutral"
+                        priority="secondary"
+                        iconRight="arrowSquareOut"
+                        onClick={() =>
+                            window.open(provider.website, '_blank', 'noopener,noreferrer')
+                        }
+                    >
+                        <Translation id="TR_LENDING_VISIT_WEBSITE" />
+                    </Button>
+                )}
             </Row>
         </Column>
     </Card>
@@ -99,24 +103,6 @@ export const LendingDashboard = () => {
             isAvailable: true,
             website: 'https://firefish.io',
             onOpen: () => dispatch(goto({ routeName: 'lending-firefish' })),
-        },
-        {
-            id: 'ledn',
-            name: 'Ledn',
-            icon: 'bank',
-            descriptionId: 'TR_LENDING_LEDN_DESCRIPTION',
-            highlights: ['TR_LENDING_HIGHLIGHT_GLOBAL', 'TR_LENDING_HIGHLIGHT_PROOF_OF_RESERVES'],
-            isAvailable: false,
-            website: 'https://ledn.io',
-        },
-        {
-            id: 'unchained',
-            name: 'Unchained',
-            icon: 'shieldCheck',
-            descriptionId: 'TR_LENDING_UNCHAINED_DESCRIPTION',
-            highlights: ['TR_LENDING_HIGHLIGHT_MULTISIG', 'TR_LENDING_HIGHLIGHT_US'],
-            isAvailable: false,
-            website: 'https://unchained.com',
         },
     ];
 
