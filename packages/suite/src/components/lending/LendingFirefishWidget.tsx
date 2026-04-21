@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+import styled from 'styled-components';
 
 import { Translation, type TranslationKey } from '@suite/intl';
 import { goto } from '@suite/router';
@@ -26,6 +28,7 @@ import {
     FIREFISH_SUBMIT_URL,
     type FirefishCurrency,
     type FirefishPeriod,
+    type LoanType,
     firefishCurrencies,
     firefishPeriods,
     firefishWidgetConfig,
@@ -57,6 +60,56 @@ const chanceIntents: Record<ReturnType<typeof computeFirefishChanceToMatch>, Bad
     very_high: 'brand',
     na: 'neutral',
 };
+
+const chanceColors: Record<ReturnType<typeof computeFirefishChanceToMatch>, string> = {
+    low: '#FCA5A5',
+    medium: '#FDBA74',
+    high: '#86EFAC',
+    very_high: '#4ADE80',
+    na: '#E5E7EB',
+};
+
+const CHANCE_BAR_SAMPLES = 40;
+
+const SliderWrapper = styled.div`
+    position: relative;
+    width: 100%;
+    padding: 8px 0;
+`;
+
+const ChanceTrack = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    transform: translateY(-50%);
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    pointer-events: none;
+`;
+
+const ChanceTrackSegment = styled.div<{ $color: string }>`
+    flex: 1;
+    background: ${({ $color }) => $color};
+`;
+
+const ChanceLegendDot = styled.div<{ $color: string }>`
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: ${({ $color }) => $color};
+`;
+
+const ChanceLegendItem = ({ color, labelId }: { color: string; labelId: TranslationKey }) => (
+    <Row gap={6} alignItems="center">
+        <ChanceLegendDot $color={color} />
+        <Text typographyStyle="body-xs">
+            <Translation id={labelId} />
+        </Text>
+    </Row>
+);
 
 const loanTypeLabels = {
     instant: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT',
@@ -97,6 +150,34 @@ export const LendingFirefishWidget = () => {
     const [period, setPeriod] = useState<FirefishPeriod>(12);
     const [customRate, setCustomRate] = useState('6');
     const [email, setEmail] = useState('');
+    const [preferredType, setPreferredType] = useState<'instant' | 'custom'>('custom');
+
+    useEffect(() => {
+        const currentLimits = getFirefishAmountLimits(currency);
+        const parsedAmount = Number.parseFloat(amountInput);
+        if (!currentLimits || !Number.isFinite(parsedAmount) || parsedAmount <= 0) return;
+
+        const step = 0.1;
+        const { minRate } = currentLimits;
+        const { maxRate } = currentLimits;
+        for (let rate = minRate; rate <= maxRate + 0.0001; rate += step) {
+            const rounded = Math.round(rate * 10) / 10;
+            const chanceAt = computeFirefishChanceToMatch({
+                amount: parsedAmount,
+                interestRate: rounded,
+                period,
+                currency,
+            });
+            if (chanceAt === 'high' || chanceAt === 'very_high') {
+                setCustomRate(rounded.toFixed(1));
+
+                return;
+            }
+        }
+        setCustomRate(maxRate.toFixed(1));
+        // re-run when the discrete inputs change, but not on every amount keystroke
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currency, period]);
 
     const amount = Number.parseFloat(amountInput);
     const isAmountValid = Number.isFinite(amount) && amount > 0;
@@ -107,12 +188,31 @@ export const LendingFirefishWidget = () => {
     );
     const btcPrice = btcRate?.rate ?? limits?.fallbackBtcPrice;
 
-    const loanType = useMemo(
+    const autoType = useMemo(
         () => (isAmountValid ? getFirefishLoanType(amount, currency) : 'custom'),
         [amount, currency, isAmountValid],
     );
 
     const instantRate = useMemo(() => getFirefishInstantRate(currency, period), [currency, period]);
+    const isInstantAvailable = instantRate !== undefined;
+
+    let loanType: LoanType = 'custom';
+    if (autoType === 'otc') {
+        loanType = 'otc';
+    } else if (preferredType === 'instant' && isInstantAvailable) {
+        loanType = 'instant';
+    }
+
+    const loanTypeOptions = [
+        {
+            value: 'instant' as const,
+            label: <Translation id="TR_LENDING_FIREFISH_FORM_TYPE_INSTANT" />,
+        },
+        {
+            value: 'custom' as const,
+            label: <Translation id="TR_LENDING_FIREFISH_FORM_TYPE_CUSTOM" />,
+        },
+    ];
 
     const effectiveRate =
         loanType === 'instant' && instantRate !== undefined
@@ -244,7 +344,37 @@ export const LendingFirefishWidget = () => {
                             />
                         </Column>
 
-                        {loanType === 'custom' && limits !== undefined && (
+                        {autoType !== 'otc' && (
+                            <Column gap={8}>
+                                <Text typographyStyle="body-sm">
+                                    <Translation id="TR_LENDING_FIREFISH_FORM_TYPE_LABEL" />
+                                </Text>
+                                <SelectBar
+                                    options={loanTypeOptions.map(option => ({
+                                        ...option,
+                                        label:
+                                            option.value === 'instant' && !isInstantAvailable ? (
+                                                <Translation id="TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_UNAVAILABLE" />
+                                            ) : (
+                                                option.label
+                                            ),
+                                    }))}
+                                    selectedOption={loanType === 'instant' ? 'instant' : 'custom'}
+                                    onChange={value => {
+                                        if (value === 'instant' && !isInstantAvailable) return;
+                                        setPreferredType(value);
+                                    }}
+                                    isFullWidth
+                                />
+                                {!isInstantAvailable && (
+                                    <Text typographyStyle="body-xs">
+                                        <Translation id="TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_HINT" />
+                                    </Text>
+                                )}
+                            </Column>
+                        )}
+
+                        {loanType === 'custom' && limits !== undefined && isAmountValid && (
                             <Column gap={8}>
                                 <Row gap={8} alignItems="center" justifyContent="space-between">
                                     <Text typographyStyle="body-sm">
@@ -256,20 +386,62 @@ export const LendingFirefishWidget = () => {
                                             : '—'}
                                     </Text>
                                 </Row>
-                                <Range
-                                    min={limits.minRate}
-                                    max={limits.maxRate}
-                                    step="0.1"
-                                    value={
-                                        Number.isFinite(Number.parseFloat(customRate))
-                                            ? Number.parseFloat(customRate)
-                                            : limits.minRate
-                                    }
-                                    onChange={event => setCustomRate(event.target.value)}
-                                />
+                                <SliderWrapper>
+                                    <ChanceTrack>
+                                        {Array.from({ length: CHANCE_BAR_SAMPLES }, (_, i) => {
+                                            const rateSample =
+                                                limits.minRate +
+                                                ((limits.maxRate - limits.minRate) * i) /
+                                                    (CHANCE_BAR_SAMPLES - 1);
+                                            const chanceSample = computeFirefishChanceToMatch({
+                                                amount,
+                                                interestRate: rateSample,
+                                                period,
+                                                currency,
+                                            });
+
+                                            return (
+                                                <ChanceTrackSegment
+                                                    key={i}
+                                                    $color={chanceColors[chanceSample]}
+                                                />
+                                            );
+                                        })}
+                                    </ChanceTrack>
+                                    <Range
+                                        min={limits.minRate}
+                                        max={limits.maxRate}
+                                        step="0.1"
+                                        value={
+                                            Number.isFinite(Number.parseFloat(customRate))
+                                                ? Number.parseFloat(customRate)
+                                                : limits.minRate
+                                        }
+                                        onChange={event => setCustomRate(event.target.value)}
+                                        trackStyle={{ background: 'transparent' }}
+                                    />
+                                </SliderWrapper>
                                 <Row gap={8} justifyContent="space-between">
                                     <Text typographyStyle="body-xs">{limits.minRate}%</Text>
                                     <Text typographyStyle="body-xs">{limits.maxRate}%</Text>
+                                </Row>
+                                <Row gap={12} justifyContent="center">
+                                    <ChanceLegendItem
+                                        color={chanceColors.low}
+                                        labelId="TR_LENDING_FIREFISH_FORM_CHANCE_LOW"
+                                    />
+                                    <ChanceLegendItem
+                                        color={chanceColors.medium}
+                                        labelId="TR_LENDING_FIREFISH_FORM_CHANCE_MEDIUM"
+                                    />
+                                    <ChanceLegendItem
+                                        color={chanceColors.high}
+                                        labelId="TR_LENDING_FIREFISH_FORM_CHANCE_HIGH"
+                                    />
+                                    <ChanceLegendItem
+                                        color={chanceColors.very_high}
+                                        labelId="TR_LENDING_FIREFISH_FORM_CHANCE_VERY_HIGH"
+                                    />
                                 </Row>
                             </Column>
                         )}

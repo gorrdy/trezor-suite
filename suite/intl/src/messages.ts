@@ -4920,13 +4920,26 @@ export const messages = defineMessages({
         id: 'TR_LENDING_FIREFISH_FORM_CHANCE_NA',
         defaultMessage: 'Not available',
     },
+    TR_LENDING_FIREFISH_FORM_TYPE_LABEL: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_LABEL',
+        defaultMessage: 'Loan type',
+    },
     TR_LENDING_FIREFISH_FORM_TYPE_INSTANT: {
         id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT',
-        defaultMessage: 'Instant loan',
+        defaultMessage: 'Instant',
     },
     TR_LENDING_FIREFISH_FORM_TYPE_CUSTOM: {
         id: 'TR_LENDING_FIREFISH_FORM_TYPE_CUSTOM',
-        defaultMessage: 'Custom loan',
+        defaultMessage: 'Standard',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_UNAVAILABLE: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_UNAVAILABLE',
+        defaultMessage: 'Instant (N/A)',
+    },
+    TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_HINT: {
+        id: 'TR_LENDING_FIREFISH_FORM_TYPE_INSTANT_HINT',
+        defaultMessage:
+            'Instant loan is not available for this currency/period combination. Choose Standard to pick your own rate.',
     },
     TR_LENDING_FIREFISH_FORM_TYPE_OTC: {
         id: 'TR_LENDING_FIREFISH_FORM_TYPE_OTC',
